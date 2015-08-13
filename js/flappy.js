@@ -12,6 +12,8 @@ var fireballs = [];
 var score = 20;
 var labelScore;
 var timer = 20;
+
+
 /*
  * Loads all resources for the game and gives them names.
  */
@@ -35,18 +37,6 @@ function create() {
     background.animations.add("scroll", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 10, true);
     background.animations.play('scroll');
 
-
-    game.input
-        .onDown
-        .add(clickHandler);
-    game.input
-        .keyboard.addKey(Phaser.Keyboard.SPACEBAR)
-        .onDown.add(spaceHandler);
-    game.input
-        .onDown
-        .add(clickFireball);
-
-    game.physics.startSystem(Phaser.Physics.ARCADE);
     x = game.rnd.integerInRange(0, 790);
     y = game.rnd.integerInRange(0, 400);
     player = game.add.sprite(x, y, "playerImg");
@@ -54,17 +44,19 @@ function create() {
     player.height = 150;
 
     game.physics.arcade.enable(player);
-    pipeInterval = 0.3;
-    game.time.events
-        .loop(pipeInterval * Phaser.Timer.SECOND,
-        movingDragon);
+
+    splashDisplay = game.add.text(75,200, "Tap / click to face your doom", { font: "50px Arial", fill: "#bce8f1", align: "center" });
 
 
-    labelScore = game.add.text(20, 10, "20", { font: "65px Arial", fill: "#ffffff", align: "center" });
+    // start game when click
+    game.input
+        .onDown
+        .add(start);
 
-    // set the background colour of the scene
-    timerEvent = game.time.events.loop(Phaser.Timer.SECOND, updateTimer);
-    countDownText = game.add.text(700, 10, timer, { font: "40px Arial", fill: "#bce8f1", align: "center" });
+    //
+    //game.input
+    //    .keyboard.addKey(Phaser.Keyboard.ENTER)
+    //    .onDown.add(start);
 
 }
 function increaseScore() {
@@ -79,6 +71,40 @@ function movingDragon(event) {
 
 
 }
+
+function start () {
+
+
+    // remove all click handlers set up so far
+    game.input.onDown.removeAll();
+
+    // set up new ones
+    game.input
+        .onDown
+        .add(clickHandler);
+    splashDisplay.destroy();
+
+
+    game.input
+        .onDown
+        .add(clickFireball);
+
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+
+
+    pipeInterval = 0.3;
+    game.time.events
+        .loop(pipeInterval * Phaser.Timer.SECOND,
+        movingDragon);
+
+    labelScore = game.add.text(20, 10, "20", { font: "65px Arial", fill: "#ffffff", align: "center" });
+
+    // set the background colour of the scene
+    timerEvent = game.time.events.loop(Phaser.Timer.SECOND, updateTimer);
+    countDownText = game.add.text(700, 10, timer, { font: "40px Arial", fill: "#bce8f1", align: "center" });
+
+}
+
 function clickHandler(event) {
 
     var Fireball = game.add.sprite(event.x-50, event.y-50, "Fireball");
@@ -98,10 +124,7 @@ function clickHandler(event) {
 }
 
 
-function spaceHandler() {
-        game.sound.play("score");
 
-    }
 
 function clickFireball(event) {
     game.sound.play("Small fireball");
