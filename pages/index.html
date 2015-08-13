@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dragon's Den</title>
+    <link rel="stylesheet" href="../lib/bootstrap.css"/>
+    <link rel="stylesheet" href="../assets/style.css"/>
+
+</head>
+
+<body>
+
+<div class="container">
+
+
+    <div class="row">
+    <h2>Welcome to the Dragon's Den of Doom...</h2>
+
+
+        <div class="row">
+
+            <div class="col-xs-6">
+            <p class="firstline">The aim is to destroy Draco the Dragon.</p>
+            <p class="instruction"> Click the mouse to shoot fireballs, try your best to hit him.</p>
+
+            <p class="secondline">Fight fire with fire, right?</p>
+            <p class="thirdline">Can you be the brave knight you were destined to be?</p>
+            <!-- <p> This is a comment not shown to the user</p> -->
+            </div>
+
+                <div class="col-xs-6">
+                <div id="game">
+                </div>
+                    </div>
+
+
+
+
+            <div class="row">
+                <div class="col-xs-6">
+            <p>
+            <ul>
+                <li class="gold">Go ahead...</li>
+                <li class="score">Play...</li>
+                <li class="red">I dare you.</li>
+            </ul>
+            </p>
+                </div>
+
+
+
+
+                <div class="col-xs-6">
+                    <p class="highscores">
+                    The highest scorers are:
+
+                    <ul id ="scoreBoard">
+                    <p class="scoreBoard">
+                    </ul>
+
+
+        </form>
+    </div>
+</div>
+
+        </div>
+    </div>
+
+
+
+    <script src="../lib/jquery.js"></script>
+
+
+                <script type="text/javascript" src="../lib/phaser.min.js"></script>
+                <script type="text/javascript" src="../js/flappy.js"></script>
+
+
+</div>
+    <div id="greeting">
+        <form id="greeting-form" method="post" action="/score">
+            <div class="form-group">
+
+                <label class = "fullName">Save your score!</label>
+                <input type="text" id="fullName" class="form-control"
+                       name="fullName" placeholder="Bob">
+
+                <input type="hidden" id="score" name="score" value="0">
+
+            </div>
+            <button class="btn btn-default" type="submit">OK</button>
+
+        </form>
+    </div>
+</div>
+</body>
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
