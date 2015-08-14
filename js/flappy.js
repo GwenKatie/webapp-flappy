@@ -11,7 +11,7 @@ var game = new Phaser.Game(790, 400, Phaser.AUTO, 'game', stateActions);
 var fireballs = [];
 var score = 20;
 var labelScore;
-var timer = 20;
+var timer = 30;
 
 
 /*
